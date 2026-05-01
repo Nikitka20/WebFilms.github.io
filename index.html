@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,9 +14,9 @@
       <p class="logo"><img src="./img/icons/logo.svg" alt="">WebFilms</p>
       <nav class="header__nav">
         <ul class="header__nav-list">
-          <li><a href="#!" class="header__nav-link">Премьеры</a></li>
-          <li><a href="#!" class="header__nav-link">Моя кинотека</a></li>
-          <li><a href="#!" class="header__nav-link">Интересные факты</a></li>
+          <li><a href="#premiere" class="header__nav-link">Премьеры</a></li>
+          <li><a href="#films" class="header__nav-link">Моя кинотека</a></li>
+          <li><a href="#films" class="header__nav-link">Интересные факты</a></li>
         </ul>
       </nav>
       <p class="header__hello"><span id="hello">Добрый день</span>, <span id="name">Пользователь</span>!</p>
@@ -24,7 +24,7 @@
   </header>
 
   <main>
-    <section class="premiere">
+    <section class="premiere" id="premiere">
       <div class="container">
         <div class="slider">
           <button class="slider__arrow slider__arrow--prev">
@@ -109,7 +109,7 @@
       </div>
     </section>
 
-    <section class="films">
+    <section class="films" id="films">
       <div class="container">
         <h2 class="films__title">Моя кинотека</h2>
         <button class="films__btn">+</button>
@@ -203,7 +203,7 @@
       <h3 class="filling-form__title">Добавление нового фильма</h3>
       <label>
         Жанр:
-        <select>
+        <select class="film-genre">
           <option value="" disabled>Выберите жанр</option>
           <option value="Фильм" selected>Фильм</option>
           <option value="Сериал">Сериал</option>
@@ -229,7 +229,15 @@
 
       <div class="filling-form__viewed">
         <fieldset class="filling-form__score">
-          <label>Оценка:<span class="rating">10</span></label>
+          <label class="filling-form__rating">
+            Оценка:
+            <input class="film-rating" type="number" min="1" max="10" value="10">
+          </label>
+          <label class="filling-form__watched">
+            Дата просмотра:
+            <input class="film-watched-date" type="date">
+          </label>
+          <br>
           <label class="favourite">
             <span>Добавить в избранное:</span>
             <input type="checkbox" name="favourite" class="favourite__checkbox">

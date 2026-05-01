@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
@@ -50,6 +54,18 @@ button {
 
 img {
   max-width: 100%;
+}
+
+.header__nav-link {
+  outline-offset: 4px;
+}
+
+.header__nav-link:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #B5BAF1;
 }
 
 .container {
@@ -425,6 +441,10 @@ option {
   margin-bottom: 5px;
 }
 
+.favourite {
+  position: relative;
+}
+
 .favourite__checkbox {
   display: none;
 }
@@ -648,27 +668,44 @@ input, select, textarea {
   gap: 20px;
 }
 
-.filling-form__score .favourite {
-  flex-direction: row;
-}
-
-.filling-form__score .rating {
-  display: inline-block;
-}
-
-.filling-form__score label {
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-}
-
-.filling-form__viewed fieldset {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.filling-form__score {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) max-content;
+  align-items: end;
+  column-gap: 15px;
+  row-gap: 12px;
   margin: 0;
   padding: 0;
   border: none;
+}
+
+.film-rating,
+.film-watched-date {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: rgba(0, 0, 0, 0.25);
+  color: #fff;
+}
+
+.filling-form__rating,
+.filling-form__watched {
+  flex: 1 1 160px;
+  gap: 8px;
+}
+
+.filling-form__score .favourite {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  white-space: normal;
+  max-width: 100%;
+}
+
+.filling-form__score .favourite span {
+  max-width: 100%;
 }
 
 .switcher {
@@ -736,4 +773,167 @@ input, select, textarea {
 
 .footer a:active {
   color: #3F249C;
+}
+
+/* -------------------- Adaptive -------------------- */
+
+@media (max-width: 1024px) {
+  .header {
+    padding: 25px 0;
+    font-size: 18px;
+  }
+
+  .header .container {
+    flex-wrap: wrap;
+    gap: 12px 18px;
+  }
+
+  .header__nav-list {
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .slider__item {
+    height: 520px;
+  }
+
+  .slider__title {
+    font-size: 38px;
+  }
+
+  .films__title {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 24px;
+  }
+
+  .header__hello {
+    width: 100%;
+    text-align: center;
+  }
+
+  .slider__item {
+    height: 420px;
+  }
+
+  .slider__arrow svg {
+    width: 30px;
+  }
+
+  .timer__desc {
+    font-size: 22px;
+  }
+
+  .timer__item {
+    width: 70px;
+    height: 90px;
+  }
+
+  .timer__count {
+    font-size: 34px;
+  }
+
+  .films__btn {
+    position: static;
+    margin: 0 auto 15px;
+  }
+
+  .film {
+    width: calc(50% - 10px);
+    min-width: 220px;
+    height: 420px;
+  }
+
+  .about-film {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .about-film__poster {
+    width: 100%;
+    height: 320px;
+  }
+
+  .about-film__form {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .filling-form {
+    width: min(520px, calc(100vw - 30px));
+  }
+
+  .filling-form__score {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .filling-form__score .favourite {
+    grid-column: 1 / -1;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .header__nav {
+    width: 100%;
+  }
+
+  .header__nav-list {
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .header__nav-link {
+    font-size: 16px;
+  }
+
+  .slider__item {
+    height: 330px;
+  }
+
+  .slider__title {
+    font-size: 26px;
+  }
+
+  .timer__row {
+    gap: 10px;
+  }
+
+  .timer__item {
+    width: 62px;
+    height: 78px;
+  }
+
+  .timer__count {
+    font-size: 28px;
+  }
+
+  .films__title {
+    font-size: 34px;
+  }
+
+  legend {
+    font-size: 18px;
+  }
+
+  .film {
+    width: 100%;
+    min-width: 0;
+    height: 380px;
+  }
+
+  .filling-form__score {
+    grid-template-columns: 1fr;
+  }
+
+  .filling-form__score .favourite {
+    white-space: normal;
+    justify-content: space-between;
+  }
 }
